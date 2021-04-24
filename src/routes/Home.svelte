@@ -8,7 +8,6 @@
 
 	let balance = 0,
 	bLoading = true;
-
 	let sAccountNo;
 
 	//import { ethStore, web3, selectedAccount, connected } from 'svelte-web3'
@@ -336,14 +335,8 @@
   balance = result;
 });
 });
-
-
     })
 
-	
-
-
-	
 
 
 

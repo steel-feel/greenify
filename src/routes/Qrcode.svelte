@@ -23,7 +23,9 @@
     <img src="{imgSrc}" alt="Account QR Code">
 {/if}
 
-<h3>Show QR code to any Green Token Rewards POS or Agent for points</h3>
+<h5>{window.sAccountNo}</h5>
+
+<h3>Show QR code or share above address to any Greenify Rewards POS or Agent for points</h3>
 
 <img class="max-w-3/4 h-64" src="./images/qr-illus.jpg" alt="">
 <br>
