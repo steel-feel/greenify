@@ -11,7 +11,11 @@ module.exports = {
   },
     darkMode: false, // or 'media' or 'class'
     theme: {
-      extend: {},
+      extend: {
+        backgroundImage: theme => ({
+         'discount': "url('/images/discount.svg')"
+        })
+      }
     },
     variants: {
       extend: {},

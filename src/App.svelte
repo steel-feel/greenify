@@ -5,8 +5,9 @@
 
 <main>
 	<Header />
-
-	<div class="p-2 grid grid grid-cols-2 gap-2 place-items-center place-content-center">
+	<div
+		class="p-2 grid grid grid-cols-2 gap-2 items-center place-items-center place-content-center"
+	>
 		<div class="col-span-2 p-10">
 			<div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
 				<div class="mx-1 flex items-center">
@@ -63,41 +64,44 @@
 				</div>
 			</div>
 		</div>
-		<div class="shadow-lg rounded-2xl h-40 p-4 bg-white relative overflow-hidden"	>
-			<img
-				alt="moto"
-				src="/images/newspaper.svg"
-				class="absolute -right-15 top-20 h-40 w-40 mb-4"
-			/>
-			<div class="w-4/6">
-				<p class="text-gray-800 text-lg font-medium mb-2">
-					News & Stories
-				</p>
-				<p class="text-gray-400 text-xs">
-					Latest trends and happening around you.
-				</p>
+		<a class="cursor-pointer no-underline" href="">
+			<div class="shadow-lg rounded-2xl h-40 p-4 bg-white relative overflow-hidden" >
+				<img
+					alt="moto"
+					src="/images/newspaper.svg"
+					class="absolute -right-15 top-20 h-40 w-40 mb-4"
+				/>
+				<div class="w-4/6">
+					<p class="text-gray-800 text-lg font-medium mb-2">
+						News & Stories
+					</p>
+					<p class="text-gray-400 text-xs">
+						Latest trends and happening around you.
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="shadow-lg rounded-2xl h-40 p-4 bg-white relative overflow-hidden"	>
-			<img
-				alt="moto"
-				src="/images/discount.svg"
-				class="absolute -right-1 top-20 h-40 w-40 mb-4"
-			/>
-			<div class="w-4/6">
-				<p class="text-gray-800 text-lg font-medium mb-2">Shop</p>
-				<p class="text-gray-400 text-xs">
-					Redeem your earned coins for awesome offers
-				</p>
+		</a>
+		<a class="cursor-pointer no-underline" href="">
+			<div	class="shadow-lg  rounded-2xl h-40 p-4 bg-white relative overflow-hidden"	>
+				<img
+					alt="moto"
+					src="/images/discount.svg"
+					class="z-0 absolute -right-8 top-20 h-40 w-40 "
+				/>
+				<div class="w-4/6 z-1">
+					<p class="text-gray-800 text-lg font-medium mb-2">Shop</p>
+					<p class="text-gray-400 text-xs ">
+						Redeem your earned coins for awesome offers
+					</p>
+				</div>
 			</div>
-		</div>
-
-		<div class="col-span-2">
+		</a>
+		<div class="col-span-2 h-40 p-6">
 			<button
 				type="button"
-				class="max-w-lg  py-2 px-16  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+				class="cursor-pointer max-w-lg  py-2 px-16  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
 			>
-				Get reward
+				Get Reward
 			</button>
 		</div>
 	</div>
