@@ -2,14 +2,9 @@
 	import Header from "./Header.svelte";
 	import { onMount } from 'svelte';
 	import Fortmatic from 'fortmatic';
-	import {replace} from 'svelte-spa-router';
+	
 
-	if(window.innerWidth > 640 )
-	{	
-		
-		replace("/error/0");
-		throw new Error('Required Mobile browser');
-	}
+	
 
 	let balance = 0,
 	bLoading = true;
