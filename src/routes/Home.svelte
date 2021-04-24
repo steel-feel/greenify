@@ -1,6 +1,344 @@
 <script>
-	export let name;
 	import Header from "./Header.svelte";
+	import { onMount } from 'svelte';
+	import Fortmatic from 'fortmatic';
+
+	let balance = 0,
+	bLoading = true;
+
+	//import { ethStore, web3, selectedAccount, connected } from 'svelte-web3'
+
+	const fm = new Fortmatic("pk_test_7F64757BB0C010B6", "ropsten");
+	
+	//window.web3 = new Web3(fm.getProvider());
+
+	
+	//oWeb3 = new $web3(fm.getProvider());
+
+	onMount(
+    async () => {
+  //  console.log(window.Web3)
+	// await ethStore.setBrowserProvider(fm.getProvider());
+	// await ethStore.setProvider(fm.getProvider());
+
+	window.iWeb3 = new window.Web3(fm.getProvider());
+	
+		// Get your contract ABI from compiled smart contract json
+	const contractAbi = [
+		{
+			anonymous: false,
+			inputs: [
+				{
+					indexed: true,
+					internalType: "address",
+					name: "owner",
+					type: "address",
+				},
+				{
+					indexed: true,
+					internalType: "address",
+					name: "spender",
+					type: "address",
+				},
+				{
+					indexed: false,
+					internalType: "uint256",
+					name: "value",
+					type: "uint256",
+				},
+			],
+			name: "Approval",
+			type: "event",
+		},
+		{
+			anonymous: false,
+			inputs: [
+				{
+					indexed: true,
+					internalType: "address",
+					name: "from",
+					type: "address",
+				},
+				{
+					indexed: true,
+					internalType: "address",
+					name: "to",
+					type: "address",
+				},
+				{
+					indexed: false,
+					internalType: "uint256",
+					name: "value",
+					type: "uint256",
+				},
+			],
+			name: "Transfer",
+			type: "event",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "spender",
+					type: "address",
+				},
+				{
+					internalType: "uint256",
+					name: "amount",
+					type: "uint256",
+				},
+			],
+			name: "approve",
+			outputs: [
+				{
+					internalType: "bool",
+					name: "",
+					type: "bool",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "spender",
+					type: "address",
+				},
+				{
+					internalType: "uint256",
+					name: "subtractedValue",
+					type: "uint256",
+				},
+			],
+			name: "decreaseAllowance",
+			outputs: [
+				{
+					internalType: "bool",
+					name: "",
+					type: "bool",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "spender",
+					type: "address",
+				},
+				{
+					internalType: "uint256",
+					name: "addedValue",
+					type: "uint256",
+				},
+			],
+			name: "increaseAllowance",
+			outputs: [
+				{
+					internalType: "bool",
+					name: "",
+					type: "bool",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "recipient",
+					type: "address",
+				},
+				{
+					internalType: "uint256",
+					name: "amount",
+					type: "uint256",
+				},
+			],
+			name: "transfer",
+			outputs: [
+				{
+					internalType: "bool",
+					name: "",
+					type: "bool",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "sender",
+					type: "address",
+				},
+				{
+					internalType: "address",
+					name: "recipient",
+					type: "address",
+				},
+				{
+					internalType: "uint256",
+					name: "amount",
+					type: "uint256",
+				},
+			],
+			name: "transferFrom",
+			outputs: [
+				{
+					internalType: "bool",
+					name: "",
+					type: "bool",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "string",
+					name: "name_",
+					type: "string",
+				},
+				{
+					internalType: "string",
+					name: "symbol_",
+					type: "string",
+				},
+			],
+			stateMutability: "nonpayable",
+			type: "constructor",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "owner",
+					type: "address",
+				},
+				{
+					internalType: "address",
+					name: "spender",
+					type: "address",
+				},
+			],
+			name: "allowance",
+			outputs: [
+				{
+					internalType: "uint256",
+					name: "",
+					type: "uint256",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+		{
+			inputs: [
+				{
+					internalType: "address",
+					name: "account",
+					type: "address",
+				},
+			],
+			name: "balanceOf",
+			outputs: [
+				{
+					internalType: "uint256",
+					name: "",
+					type: "uint256",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+		{
+			inputs: [],
+			name: "decimals",
+			outputs: [
+				{
+					internalType: "uint8",
+					name: "",
+					type: "uint8",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+		{
+			inputs: [],
+			name: "name",
+			outputs: [
+				{
+					internalType: "string",
+					name: "",
+					type: "string",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+		{
+			inputs: [],
+			name: "symbol",
+			outputs: [
+				{
+					internalType: "string",
+					name: "",
+					type: "string",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+		{
+			inputs: [],
+			name: "totalSupply",
+			outputs: [
+				{
+					internalType: "uint256",
+					name: "",
+					type: "uint256",
+				},
+			],
+			stateMutability: "view",
+			type: "function",
+		},
+	];
+
+	// Create contract object
+	const contractInstance = new window.iWeb3.eth.Contract(contractAbi,	"0xb8Fb19A9CD495EDC6Fa3dD6fDB0Fa95ABF10271F");
+
+	
+	window.iWeb3.eth.getAccounts(function(error, accounts) {
+  if (error) throw error;
+  // Make the contract call.
+
+  bLoading = true;
+  contractInstance.methods.balanceOf(accounts[0]).call(function(error, result) {
+  if (error) throw error;
+  bLoading = false;
+  balance = result;
+});
+});
+
+
+    })
+
+	
+
+
+	
+
+
+
 </script>
 
 <main>
@@ -34,12 +372,17 @@
 					<h1 class="text-xl mx-5">Balance</h1>
 					<div>
 						<div class="flex flex-col justify-start">
-							<p
-								class="text-gray-700 dark:text-gray-100 text-4xl text-left font-bold my-4"
-							>
-								50
+							
+							{#if bLoading}	
+							<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+							{:else}
+							
+							<p	class="text-gray-700 dark:text-gray-100 text-4xl text-left font-bold my-4" 	>
+								{balance}
 								<span class="text-sm"> GTK </span>
 							</p>
+							{/if}
+
 							<div
 								class="flex items-center text-green-500 text-sm"
 							>
@@ -65,7 +408,9 @@
 			</div>
 		</div>
 		<a class="cursor-pointer no-underline" href="">
-			<div class="shadow-lg rounded-2xl h-40 p-4 bg-white relative overflow-hidden" >
+			<div
+				class="shadow-lg rounded-2xl h-40 p-4 bg-white relative overflow-hidden"
+			>
 				<img
 					alt="moto"
 					src="/images/newspaper.svg"
@@ -82,7 +427,9 @@
 			</div>
 		</a>
 		<a class="cursor-pointer no-underline" href="">
-			<div	class="shadow-lg  rounded-2xl h-40 p-4 bg-white relative overflow-hidden"	>
+			<div
+				class="shadow-lg  rounded-2xl h-40 p-4 bg-white relative overflow-hidden"
+			>
 				<img
 					alt="moto"
 					src="/images/discount.svg"
@@ -107,3 +454,67 @@
 	</div>
 </main>
 
+<style>
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: green;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  color:black;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  color:black;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  color:black;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+</style>
