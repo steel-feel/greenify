@@ -2,9 +2,19 @@
 	import Header from "./Header.svelte";
 	import { onMount } from 'svelte';
 	import Fortmatic from 'fortmatic';
+	import {replace} from 'svelte-spa-router';
+
+	if(window.innerWidth > 640 )
+	{	
+		
+		replace("/error/0");
+		throw new Error('Required Mobile browser');
+	}
 
 	let balance = 0,
 	bLoading = true;
+
+	let sAccountNo;
 
 	//import { ethStore, web3, selectedAccount, connected } from 'svelte-web3'
 
@@ -320,9 +330,12 @@
 	window.iWeb3.eth.getAccounts(function(error, accounts) {
   if (error) throw error;
   // Make the contract call.
+  sAccountNo = accounts[0];
+
+  window.sAccountNo = accounts[0];
 
   bLoading = true;
-  contractInstance.methods.balanceOf(accounts[0]).call(function(error, result) {
+  contractInstance.methods.balanceOf(sAccountNo).call(function(error, result) {
   if (error) throw error;
   bLoading = false;
   balance = result;
@@ -414,13 +427,13 @@
 				<img
 					alt="moto"
 					src="/images/newspaper.svg"
-					class="absolute -right-15 top-20 h-40 w-40 mb-4"
+					class="absolute -right-10 z-0 h-40 w-40 mb-4"
 				/>
 				<div class="w-4/6">
 					<p class="text-gray-800 text-lg font-medium mb-2">
 						News & Stories
 					</p>
-					<p class="text-gray-400 text-xs">
+					<p class="text-gray-400 text-xs z-5 relative">
 						Latest trends and happening around you.
 					</p>
 				</div>
@@ -428,28 +441,26 @@
 		</a>
 		<a class="cursor-pointer no-underline" href="">
 			<div
-				class="shadow-lg  rounded-2xl h-40 p-4 bg-white relative overflow-hidden"
+				class="shadow-lg z-5 rounded-2xl h-40 p-4 bg-white relative overflow-hidden"
 			>
 				<img
 					alt="moto"
 					src="/images/discount.svg"
-					class="z-0 absolute -right-8 top-20 h-40 w-40 "
+					class="z-1 absolute -right-8  h-40 w-40 "
 				/>
-				<div class="w-4/6 z-1">
+				<div class="w-4/6 z-5">
 					<p class="text-gray-800 text-lg font-medium mb-2">Shop</p>
-					<p class="text-gray-400 text-xs ">
+					<p class="text-gray-400 text-xs z-5 relative">
 						Redeem your earned coins for awesome offers
 					</p>
 				</div>
 			</div>
 		</a>
 		<div class="col-span-2 h-40 p-6">
-			<button
-				type="button"
-				class="cursor-pointer max-w-lg  py-2 px-16  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+			<a href="/#/getReward"		class="no-underline cursor-pointer max-w-lg  py-2 px-16  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
 			>
 				Get Reward
-			</button>
+		</a>
 		</div>
 	</div>
 </main>

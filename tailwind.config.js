@@ -13,7 +13,7 @@ module.exports = {
     theme: {
       extend: {
         backgroundImage: theme => ({
-         'discount': "url('/images/discount.svg')"
+         'error': "url('/images/8.svg')"
         })
       }
     },
