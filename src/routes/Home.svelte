@@ -433,13 +433,13 @@
 			>
 				<img
 					alt="moto"
-					src="/images/discount.svg"
+					src="/images/nav.jpg"
 					class="z-1 absolute -right-8  h-40 w-40 "
 				/>
 				<div class="w-4/6 z-5">
-					<p class="text-gray-800 text-lg font-medium mb-2">Shop</p>
+					<p class="text-gray-800 text-lg font-medium relative z-5 mb-2">Where's my bin</p>
 					<p class="text-gray-400 text-xs z-5 relative">
-						Redeem your earned coins for awesome offers
+						Quickly discover nearest smart bins
 					</p>
 				</div>
 			</div>

@@ -41,6 +41,8 @@ function handleClick (){
         <div>
         <a href="#" on:click={handleClick} class="no-underline  font-bold block md:inline-block text-md px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-teal-500  mt-4 md:mt-0">Home</a>
          <a href="#"  on:click={handleClick} class="no-underline  font-bold block md:inline-block text-md px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-teal-500  mt-4 md:mt-0">How-tos</a>
+         <a href="#" on:click={handleClick}  class="no-underline  font-bold block md:inline-block text- px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-teal-500  mt-4 md:mt-0">Feedback</a>
+         <a href="#" on:click={handleClick}  class="no-underline  font-bold block md:inline-block text- px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-teal-500  mt-4 md:mt-0">Shop</a>
          <a href="#" on:click={handleClick}  class="no-underline  font-bold block md:inline-block text- px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-teal-500  mt-4 md:mt-0">Trasaction History</a>
       </div>
     </div>
